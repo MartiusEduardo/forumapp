@@ -1,0 +1,29 @@
+@model ForumApp.Models.CategoryViewModel
+<html>
+    <body>
+        <div class="container">
+            <p></p>
+            @Html.ActionLink("Create new Category", "CreatingCategory", new {}, new { @class="btn btn-primary"})
+            <p></p>
+            @foreach (var group in this.Model.Group) {
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th colspan="2" class="text-center bg-primary">@group.Name</th>
+                    </tr>
+                </thead>
+                @foreach (var category in this.Model.Category) {
+                    if (@category.idGroup == @group.idGroup) {
+                    <tbody>
+                        <tr class="text-nowrap">
+                            <td>@Html.ActionLink(@category.Name, "ListTopicsPerCategory", "Topic", new {idCategory = @category.idCategory})</td>
+                            <td>@category.Description</td>
+                        </tr>
+                    </tbody>
+                    }
+                }
+            </table>
+            }
+        </div>
+    </body>
+</html>

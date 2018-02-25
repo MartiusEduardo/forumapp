@@ -1,0 +1,7 @@
+<html>
+    <body>
+        <h1>@ViewData["Message"]</h1>
+        <p></p>
+        @Html.ActionLink("Back", "TopicDetails", "Topic", new {idTopic = @ViewData["idTopic"]}, new { @class="btn btn-default"})
+    </body>
+</html>

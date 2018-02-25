@@ -1,0 +1,22 @@
+@inject UserManager<ApplicationUser> UserManager
+<html>
+    <body>
+        <div class="container">
+        <p></p>
+        @Html.ActionLink("Back", "ListTopicsPerCategory", "Topic", new {idCategory = @ViewData["idCategory"]}, new { @class="btn btn-default"})
+        <p></p>
+        @using (Html.BeginForm("CreateTopic", "Topic", "POST")) {
+            <table class="table table-bordered table-striped" align="center">
+                @Html.Hidden("idUser", @UserManager.GetUserId(User))
+                @Html.Hidden("idCategory", @ViewData["idCategory"])
+                <tr><td>@Html.Label("Category: ") @ViewData["categoryName"]</td></tr>
+                <tr><td>@Html.Label("Name: ") @Html.TextBox("Name", "", new {size="60"})</td></tr>
+                <tr><td>@Html.Label("Description: ")</td></tr>
+                <tr><td>@Html.TextArea("Description", "", new {cols="150"})</td></tr>
+                <tr><td>@Html.Label("Date Registered: ") @Html.TextBox("DateRegister", @DateTime.Today, new {@readonly="readonly"})</td></tr>
+            </table>
+            <input onclick="return confirm('Are you sure that you want create a new topic?');" type="submit" value="Create" class="btn btn-primary"/>
+        }
+        </div>
+    </body>
+</html>

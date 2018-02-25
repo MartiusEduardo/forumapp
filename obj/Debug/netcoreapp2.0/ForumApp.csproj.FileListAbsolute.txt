@@ -1,0 +1,11 @@
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\bin\Debug\netcoreapp2.0\ForumApp.deps.json
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\bin\Debug\netcoreapp2.0\ForumApp.runtimeconfig.json
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\bin\Debug\netcoreapp2.0\ForumApp.runtimeconfig.dev.json
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\bin\Debug\netcoreapp2.0\ForumApp.dll
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\bin\Debug\netcoreapp2.0\ForumApp.pdb
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\obj\Debug\netcoreapp2.0\ForumApp.csproj.CoreCompileInputs.cache
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\obj\Debug\netcoreapp2.0\ForumApp.AssemblyInfoInputs.cache
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\obj\Debug\netcoreapp2.0\ForumApp.AssemblyInfo.cs
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\obj\Debug\netcoreapp2.0\ForumApp.dll
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\obj\Debug\netcoreapp2.0\ForumApp.pdb
+C:\Users\Eduardo\Documents\Visual Studio 2017\Projects\ForumApp\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

@@ -1,0 +1,21 @@
+@model ForumApp.Models.Posting
+<html>
+    <body>
+        <div class="container">
+        <p></p>
+        @Html.ActionLink("Back", "TopicDetails", "Topic", new {idTopic = @Model.idTopic}, new { @class="btn btn-default"})
+        <p></p>
+        @using (Html.BeginForm("EditPosting", "Topic", "POST")) {
+            <table class="table table-bordered table-striped" align="center">
+                @Html.HiddenFor(t => t.idPosting)
+                @Html.HiddenFor(t => t.idTopic)
+                @Html.HiddenFor(t => t.idUser)
+                <tr><td>@Html.Label("Message:" )</td></tr>
+                <tr><td>@Html.TextAreaFor(p => p.Message, new {cols="150"})</td></tr>
+                @Html.Hidden("DatePublication", @DateTime.Today)
+            </table>
+            <input onclick="return confirm('Are you sure that you want to update the posting?');" class="btn btn-primary" type="submit" value="Save"/>
+        }
+        </div>
+    </body>
+</html>

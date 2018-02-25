@@ -1,0 +1,25 @@
+@model List<ForumApp.Models.Topic>
+@inject UserManager<ApplicationUser> UserManager
+
+<html>
+    <body>
+        <div class="container">
+            <p></p>
+            @Html.ActionLink("Back", "Index", "Category", new {}, new { @class="btn btn-default"}) @Html.ActionLink("Create new topic", "CreatingTopic", new {idCategory = @ViewData["idCategory"]}, new { @class="btn btn-primary"})
+            <p></p>
+            <table class="table table-bordered table-striped table-hover">
+                <tr class="text-nowrap thead-dark">
+                    <th class="text-center">Topics</th>
+                </tr>
+                @foreach (var topic in this.Model) {
+                    <tr class="text-nowrap">
+                        <td>
+                            <div>@Html.ActionLink(@topic.Name, "TopicDetails", new {idTopic = @topic.idTopic})</div>
+                            <div>Created by @UserManager.GetUserNameAsync(await @UserManager.FindByIdAsync(@topic.idUser)).Result, Last Update: @topic.DateRegister</div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </body>
+</html>

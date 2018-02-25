@@ -1,0 +1,61 @@
+@model ForumApp.Models.TopicViewModel
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<html>
+    <body>
+        <div class="container">
+        <p></p>
+        @Html.ActionLink("Back", "ListTopicsPerCategory", "Topic", new {idCategory = @Model.topic.idCategory}, new { @class="btn btn-default"})
+        <p></p>
+        <h3>@Model.topic.Name</h3>
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    <div>@UserManager.GetUserNameAsync(await @UserManager.FindByIdAsync(@Model.topic.idUser)).Result</div>
+                    <div>@Model.topic.DateRegister</div>
+                    @if (SignInManager.IsSignedIn(User) == true) {
+                        @if (@Model.topic.idUser == @UserManager.GetUserId(User)) 
+                        {
+                            <div>@Html.ActionLink("Edit Topic", "GetToEditTopic", "Topic", new {idTopic = @Model.topic.idTopic})</div>
+                        }
+                    }
+                </td>
+                <td width="80%">@Model.topic.Description</td>
+            </tr>
+        </table>
+        <p></p>
+        @foreach (var post in @Model.posting) {
+            <table class="table table-bordered" align="center">
+                <tr><td>
+                    <div>@UserManager.GetUserNameAsync(await @UserManager.FindByIdAsync(@post.idUser)).Result</div>
+                    <div>@post.DatePublication</div>
+                    @if (SignInManager.IsSignedIn(User) == true) {
+                        @if (@post.idUser == @UserManager.GetUserId(User))
+                        { 
+                            <div>@Html.ActionLink("Edit Post", "GetToEditPosting", "Topic", new {idPosting = @post.idPosting})</div>
+                            <div>@Html.ActionLink("Delete", "DeletePosting", "Topic", new {idPosting = @post.idPosting}, new {onclick="return confirm('Are you sure that you want to delete the post?');"})</div>
+                        }                        
+                    }
+                    </td>
+                    <td width="80%">@post.Message</td>
+                </tr>
+            </table>
+        }
+        <p></p>
+        @if (SignInManager.IsSignedIn(User) == true) {
+            <h3>Post a comment</h3>
+            @using (Html.BeginForm("CreatePost", "Topic", "POST")) {
+                <table class="table table-bordered table-striped" align="center">
+                    @Html.Hidden("idTopic", @Model.topic.idTopic)
+                    @Html.Hidden("idUser", @UserManager.GetUserId(User))
+                    <tr><td>@Html.Label("Message:")</td></tr>
+                    <tr><td>@Html.TextArea("Message", "", new {cols="150", id="editor"})</td></tr>
+                    @Html.Hidden("DatePublication", @DateTime.Today)
+                </table>
+                <input onclick="return confirm('Are you sure that you want to create a post?');" class="btn btn-primary" type="submit" value="Create"/>
+            }
+        }
+        </div>
+    </body>
+</html>

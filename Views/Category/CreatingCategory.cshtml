@@ -1,0 +1,19 @@
+@model List<ForumApp.Models.Group>
+<html>
+    <body>
+        <div class="container">
+        <p></p>
+        @Html.ActionLink("Back", "Index", "Category", new {}, new { @class="btn btn-default"})
+        <p></p>
+        @using (Html.BeginForm("CreateCategory", "Category", "POST")) {
+            <table class="table table-bordered table-striped" align="center">
+                <tr><td>@Html.DropDownList("idGroup", new SelectList(Model, "idGroup", "Name"))</td></tr>
+                <tr><td>@Html.Label("Name: ") @Html.TextBox("Name", "", new {size="60"})</td></tr>
+                <tr><td>@Html.Label("Description: ")</td></tr>
+                <tr><td>@Html.TextArea("Description", "", new {cols="150"})</td></tr>
+            </table>
+            <input onclick="return confirm('Are you sure that you want to create a new category?');" type="submit" value="Create" class="btn btn-primary"/>
+        }
+        </div>
+    </body>
+</html>
